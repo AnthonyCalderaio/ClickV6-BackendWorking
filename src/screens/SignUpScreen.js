@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, TouchableWithoutFeedback, Keyboard} from 'react-native';
+import {Platform, StyleSheet, Text, View, TouchableWithoutFeedback, Keyboard, Alert} from 'react-native';
 import {Container, Content, Header,Form, Input, Item, Button, Label, Body} from 'native-base';
 //npm install --save react-native-switch
 //import { Switch } from 'react-native-switch';
@@ -10,13 +10,19 @@ import {Container, Content, Header,Form, Input, Item, Button, Label, Body} from 
 //       'Shake or press menu button for dev menu',
 //   });
 
+let signUpDoc = { 
+  name: this.name1, 
+  age: this.age1, 
+   
+};
+
   export default class App extends React.Component {
 
     constructor(props){
       super(props)
       this.state = {
-        business:'',
-        social:''
+        name1: '',
+        age1: ''
       };
     }
     static navigationOptions = {
@@ -29,14 +35,14 @@ import {Container, Content, Header,Form, Input, Item, Button, Label, Body} from 
      
   }
   
-    onButtonSwitch(value){
-        if (this.refs.switchButton.value==true){
-          value: false;
-        }
-        if (this.refs.switchButton.value==false){
-          value: true;
-        }
-    }
+    // onButtonSwitch(value){
+    //     if (this.refs.switchButton.value==true){
+    //       value: false;
+    //     }
+    //     if (this.refs.switchButton.value==false){
+    //       value: true;
+    //     }
+    // }
       
   
   
@@ -87,7 +93,7 @@ import {Container, Content, Header,Form, Input, Item, Button, Label, Body} from 
               <Input style={{marginTop: 10,marginLeft: 10,marginRight: 10,}}
                 autoCorrect={false}
                 autoCapitalize='none'
-                onChangeText={(email) => this.setState({email})}
+                onChangeText={(name1) => this.setState({name1})}
               />
             </Item>
   
@@ -97,7 +103,7 @@ import {Container, Content, Header,Form, Input, Item, Button, Label, Body} from 
               secureTextEntry={true}
                 autoCorrect={false}
                 autoCapitalize='none'
-                onChangeText={(password) => this.setState({password})}
+                onChangeText={(age1) => this.setState({age1})}
               />
             </Item>
             
@@ -136,7 +142,11 @@ import {Container, Content, Header,Form, Input, Item, Button, Label, Body} from 
             full
             rounded
             primary
-            onPress = {()=> navigate()}
+            onPress = {
+              ()=> navigate()
+              //alert(this.name1+" is "+this.age1+" years old.")
+
+            }
            >
               <Text style={{color: 'white'}}>Sign Up</Text>
           </Button>
